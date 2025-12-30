@@ -5,4 +5,7 @@ export default configureStore({
   reducer: {
     flights: flightReducer,
   },
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware({
+    serializableCheck: false
+  }),
 })

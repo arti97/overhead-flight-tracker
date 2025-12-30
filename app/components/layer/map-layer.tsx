@@ -1,5 +1,5 @@
 import {APIProvider, ColorScheme, Map} from '@vis.gl/react-google-maps';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { PlaneMarker } from '~/components/marker/plane-marker';
 import Plane from '~/model/plane';
 import { MAXIMUM_LATITUDE, MAXIMUM_LONGITUDE, MINIMUM_LATITUDE, MINIMUM_LONGITUDE } from '~/utils/constants';
@@ -8,8 +8,8 @@ export function MapLayer() {
 
         const flightsOnMap = useSelector((store) => store.flights && store.flights.flightsOnMap || {});
 
-        return(
-        <APIProvider apiKey={process.env.GOOGLE_MAPS_API_KEY} region='IN' disableUsageAttribution>
+        return(<div id='google-map'>
+        <APIProvider apiKey={`${process.env.GOOGLE_MAPS_API_KEY}`} region='IN' disableUsageAttribution>
             <Map
                 mapId = 'd803a5a7e83398ec3b9aab41'
                 colorScheme = {ColorScheme.DARK}
@@ -24,5 +24,5 @@ export function MapLayer() {
                         return <PlaneMarker plane={plane}/>;
                     })}  
             </Map>
-        </APIProvider>
+        </APIProvider></div>
   )}
