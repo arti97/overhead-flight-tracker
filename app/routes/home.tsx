@@ -2,7 +2,7 @@ import type { Route } from "./+types/home";
 import { MapLayer } from "~/components/layer/map-layer";
 import { useEffect } from "react";
 import { fetchFlightData } from "~/redux/actions";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { interpolateFlightPositionsAction } from "~/redux/slices/flights-slice";
 import { APP_TITLE, INTERPOLATION_INTERVAL_MS, OPENSKY_API_REFRESH_INTERVAL_MS } from "~/utils/constants";
 
@@ -31,6 +31,6 @@ export default function Home() {
     return () => clearInterval(interval);
   }, [dispatch]);
 
-  return <MapLayer/>;
+  return <div id='home-tsx'><MapLayer/></div>
 }
 

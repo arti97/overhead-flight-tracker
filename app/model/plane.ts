@@ -1,3 +1,5 @@
+import Flightroute from "./flightroute"
+
 export default class Plane {
     public icao24: string
     public callsign: string | null
@@ -17,6 +19,7 @@ export default class Plane {
     public spi: boolean
     public positionSource: number
     public category: number
+    public flightroute?: Flightroute | null; // Additional details from ADSBDB
 
     constructor(
         icao24: string = '',
@@ -36,7 +39,8 @@ export default class Plane {
         squawk: string | null = null,
         spi: boolean = false,
         positionSource: number = 0,
-        category: number = 0
+        category: number = 0,
+        flightroute: Flightroute | null = null
     ) {
         this.icao24 = icao24;
         this.callsign = callsign;
@@ -56,13 +60,14 @@ export default class Plane {
         this.spi = spi;
         this.positionSource = positionSource;
         this.category = category;
+        this.flightroute = flightroute;
     }
     
 
     static fromOpenSkyResponse(data: any[]) {
         return new Plane(
-            data[0],
-            data[1],
+            data[0].trim(),
+            data[1].trim(),
             data[2],
             data[3],
             data[4],
@@ -78,7 +83,8 @@ export default class Plane {
             data[14],
             data[15],
             data[16],
-            data[17]
+            data[17],
+            new Flightroute() // Placeholder for Flightroute details
         );
     }
 }
