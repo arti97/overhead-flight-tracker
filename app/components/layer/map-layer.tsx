@@ -9,7 +9,7 @@ export function MapLayer() {
         const flightsOnMap = useSelector((store) => store.flights && store.flights.flightsOnMap || {});
 
         return(
-        <APIProvider apiKey={`AIzaSyC_iH6aGs-tAGlUrxODi7b5Mm4ocJT8bdU`} region='IN' disableUsageAttribution>
+        <APIProvider apiKey={process.env.GOOGLE_MAPS_API_KEY} region='IN' disableUsageAttribution>
             <Map
                 mapId = 'd803a5a7e83398ec3b9aab41'
                 colorScheme = {ColorScheme.DARK}
