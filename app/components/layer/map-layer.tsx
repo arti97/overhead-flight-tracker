@@ -6,7 +6,7 @@ import { MAXIMUM_LATITUDE, MAXIMUM_LONGITUDE, MINIMUM_LATITUDE, MINIMUM_LONGITUD
 
 export function MapLayer() {
 
-        const flightList = useSelector((store) => store.flights && store.flights.flightList || []);
+        const flightsOnMap = useSelector((store) => store.flights && store.flights.flightsOnMap || {});
 
         return(
         <APIProvider apiKey={process.env.GOOGLE_MAPS_API_KEY} region='IN' disableUsageAttribution>
@@ -20,7 +20,7 @@ export function MapLayer() {
                     east: MAXIMUM_LONGITUDE,
                     west: MINIMUM_LONGITUDE}}
                 disableDefaultUI>
-                    {flightList.map((plane: Plane) => {
+                    {Object.values(flightsOnMap).map((plane: Plane) => {
                         return <PlaneMarker plane={plane}/>;
                     })}  
             </Map>

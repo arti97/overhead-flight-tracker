@@ -1,6 +1,6 @@
 export default class Plane {
     public icao24: string
-    public callsign: string
+    public callsign: string | null
     public originCountry: string
     public timePosition: number
     public lastContact: number
@@ -20,7 +20,7 @@ export default class Plane {
 
     constructor(
         icao24: string = '',
-        callsign: string = '',
+        callsign: string | null = null,
         originCountry: string = '',
         timePosition: number = 0,
         lastContact: number = 0,

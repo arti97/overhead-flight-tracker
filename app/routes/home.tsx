@@ -1,14 +1,15 @@
 import type { Route } from "./+types/home";
 import { MapLayer } from "~/components/layer/map-layer";
-import { useEffect, useState } from "react";
-import Plane from "~/model/plane";
+import { useEffect } from "react";
 import { fetchFlightData } from "~/redux/actions";
 import { useDispatch, useSelector } from "react-redux";
+import { interpolateFlightPositionsAction } from "~/redux/slices/flights-slice";
+import { APP_TITLE, INTERPOLATION_INTERVAL_MS, OPENSKY_API_REFRESH_INTERVAL_MS } from "~/utils/constants";
 
 export function meta({}: Route.MetaArgs) {
   return [
-    { title: "Overhead Flight tracker" },
-    { name: "description", content: "Overhead Flight tracker" },
+    { title: `${APP_TITLE}` },
+    { name: "description", content: `${APP_TITLE}` },
   ];
 }
 
@@ -21,7 +22,12 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
-    const interval = setInterval(() => dispatch(fetchFlightData()), 2000);
+    const interval = setInterval(() => dispatch(fetchFlightData()), OPENSKY_API_REFRESH_INTERVAL_MS);
+    return () => clearInterval(interval);
+  }, [dispatch]);
+
+  useEffect(() => {
+    const interval = setInterval(() => dispatch(interpolateFlightPositionsAction()), INTERPOLATION_INTERVAL_MS);
     return () => clearInterval(interval);
   }, [dispatch]);
 
