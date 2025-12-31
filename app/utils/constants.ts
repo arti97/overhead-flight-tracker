@@ -18,7 +18,7 @@ export const MAXIMUM_LONGITUDE = 77.34238503
 //App related constants
 export const APP_TITLE = "Overhead Flight tracker";
 export const INTERPOLATION_INTERVAL_MS = 10;
-export const GENERIC_API_ERROR_MESSAGE = "Error making request to OpenSky API.";
+export const GENERIC_API_ERROR_MESSAGE = "Error making request to API.";
 export const API_ERROR_MESSAGE = (apiSource: string) => `${apiSource} API might be down. Please try again later.`;
 
 //Redux action types

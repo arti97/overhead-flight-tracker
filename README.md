@@ -1,31 +1,39 @@
-# Welcome to React Router!
+# Overhead Flight Tracker
 
-A modern, production-ready template for building full-stack React applications using React Router.
+TLDR: I was bored; I wanted to play around with [RTK2.0](https://redux-toolkit.js.org/), and I am an amateur avGeek :) 
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/remix-run/react-router-templates/tree/main/default)
+> To any potential interviewers: I scrambled this together in a few hours (after >1yr of career break to study. Wanted to get my hands dirty.) Happy to discuss design/drawbacks/improvements!
 
-## Features
+It's not exactly an FR clone, I wanted this more for an overhead projection for my room (see [demo](#demo) video), and basically to see the Airline/Src/Dest/Alt without having to individually click on an icon.
 
-- 🚀 Server-side rendering
-- ⚡️ Hot Module Replacement (HMR)
-- 📦 Asset bundling and optimization
-- 🔄 Data loading and mutations
-- 🔒 TypeScript by default
-- 🎉 TailwindCSS for styling
-- 📖 [React Router docs](https://reactrouter.com/)
+Real-time flight data from [OpenSky API](https://openskynetwork.github.io/opensky-api/rest.html) and [ADSBD API](https://www.adsbdb.com/)
 
-## Getting Started
+## Main Takeaways
 
-### Installation
+- React best practices for map rendering
+- Interpolate flight position for smooth(er) animation rendering, given heading and velocity
+- Flights might operate without a callsign (?!!)
 
-Install the dependencies:
+## Demo
 
-```bash
-npm install
+<video controls src="./app/assets/2F37008F-9798-4517-AE9B-371C7FD68371.MP4" title="Title"></video>
+
+<video controls src="./app/assets/Screen Recording 2025-12-31 at 23.17.50.mov" title="Title"></video>
+
+
+## DIY Development
+
+- Plug in your geo co-ordinates in constants file
+- Get a google API key with Map APIs enabled and plug it in a .env file
+
 ```
-
-### Development
-
+├── package.json
+├── .env (<------ CREATE!!)
+├── app/
+│   ├── utils/ 
+|   |   |── constants.js (<------ GEO COORDINATES HERE)
+│   └── 
+```
 Start the development server with HMR:
 
 ```bash
@@ -33,50 +41,6 @@ npm run dev
 ```
 
 Your application will be available at `http://localhost:5173`.
-
-## Building for Production
-
-Create a production build:
-
-```bash
-npm run build
-```
-
-## Deployment
-
-### Docker Deployment
-
-To build and run using Docker:
-
-```bash
-docker build -t my-app .
-
-# Run the container
-docker run -p 3000:3000 my-app
-```
-
-The containerized application can be deployed to any platform that supports Docker, including:
-
-- AWS ECS
-- Google Cloud Run
-- Azure Container Apps
-- Digital Ocean App Platform
-- Fly.io
-- Railway
-
-### DIY Deployment
-
-If you're familiar with deploying Node applications, the built-in app server is production-ready.
-
-Make sure to deploy the output of `npm run build`
-
-```
-├── package.json
-├── package-lock.json (or pnpm-lock.yaml, or bun.lockb)
-├── build/
-│   ├── client/    # Static assets
-│   └── server/    # Server-side code
-```
 
 ## Styling
 
