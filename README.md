@@ -18,7 +18,7 @@ Real-time flight data from [OpenSky API](https://openskynetwork.github.io/opensk
 
 https://github.com/user-attachments/assets/7d116f95-1709-47d8-9a09-e62a5a306393
 
-https://github.com/user-attachments/assets/4b717412-5c63-496d-b314-aca8b5018bd4
+[Screen capture](https://drive.google.com/file/d/1NR0wAgASuNN3XoN8vVGygQv0sT87CSKU/view?usp=sharing)
 
 
 <!-- <video controls src="./app/assets/2F37008F-9798-4517-AE9B-371C7FD68371.MP4" title="Title"></video>
